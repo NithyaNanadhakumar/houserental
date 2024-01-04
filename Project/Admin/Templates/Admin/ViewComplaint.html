@@ -1,0 +1,59 @@
+{% extends 'Admin/Head.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% csrf_token %}
+    <h3 align="center">User Complaints...</h3><br><br>
+    <table border="1" align="center" cellpadding="10" style="font-family: 'Times New Roman', Times, serif;color:black">
+        <tr>
+            <th>SI.No</th>
+            <th>User Name</th>
+            <th>Complaint Title</th>
+            <th>content</th>
+            <th>Action</th>
+        </tr>
+        {% for i in Ab %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.user.name}}</td>
+            <td>{{i.complaint_title}}</td>
+            <td>{{i.content}}</td>
+            <td><a href="{%  url 'aadmin:rply' i.id %}">SENT A REPLY</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <br><br>
+    <h3 align="center">Owner complaints....</h3><br>
+    <table border="1" align="center" cellpadding="10" style="font-family: 'Times New Roman', Times, serif;color:black">
+        <tr>
+            <th>SI.No</th>
+            <th>Owner Name</th>
+            <th>Complaint Title</th>
+            <th>content</th>
+            <th>Action</th>
+        </tr>
+        {% for i in Own %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.owner.name}}</td>
+            <td>{{i.complaint_title}}</td>
+            <td>{{i.content}}</td>
+            <td><a href="{%  url 'aadmin:rply' i.id %}">SENT A REPLY</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+
+{% endblock content %}

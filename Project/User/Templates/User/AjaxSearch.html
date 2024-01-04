@@ -1,0 +1,40 @@
+
+
+
+
+<table align="center" cellpadding="50" style="border-collapse: collapse">
+    <tr>
+        {% for i in data %}
+
+        <td>
+            <div style="text-align:center;border:1px solid black;margin:22px;padding:20px">
+
+                <p><img src="{{i.image.url}}" width="100px" height="100px" /></p>
+                <br>
+                <p>Rent Name:{{i.rentname}}</p>
+                <br>
+                <p>Owner Name:{{i.owner.name}}</p>
+                <br>
+                <p>Contact Info:{{i.owner.contact}}</p>
+                <br>
+                <p>Email:{{i.owner.email}}</p>
+                <br>
+                <p><a href="{% url 'user:conf' i.id %}">Book Now</a></p>
+                <br>
+                <p><a href="{% url 'user:gallery' i.id %}">View Gallery</a></p>
+                            <br>
+            </div>
+        </td>
+        {% if forloop.counter|divisibleby:4 %}
+    </tr>
+    <tr>
+        {% endif %}
+
+
+        {% endfor %}
+</table>
+
+
+<br><br>
+
+

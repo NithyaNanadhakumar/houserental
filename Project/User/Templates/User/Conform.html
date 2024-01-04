@@ -1,0 +1,66 @@
+
+{% extends 'User/Head.html' %}
+{% load static %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br><br><br>
+    <form action="" method="post">
+        {% csrf_token %}
+    <table border="4" align="center" cellpadding="10" style="border-collapse: collapse;" >
+    <tr>
+        <td>Name</td>
+        <td>{{data.rentname}}</td>
+    </tr>
+    <tr>
+        <td>Image</td>
+        <td>
+            <img src="{{data.image.url}}" alt="img" width="120px" height="120px" >
+        </td>
+    </tr>
+    <tr>
+        <td>Amount</td>
+        <td>{{data.amount}}</td>
+    </tr>
+    <tr>
+        <td>Details</td>
+        <td>{{data.details}}</td>
+    </tr>
+    <tr>
+        <td>Owner Name</td>
+        <td>{{data.owner.name}}</td>
+    </tr>
+    <tr>
+        <td>Contact</td>
+        <td>{{data.owner.contact}}</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>{{data.owner.email}}</td>
+    </tr>
+    <tr>
+        <td>RentType</td>
+        <td>{{data.renttype}}</td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">
+            <input type="submit" name="save"value="Confirm"></td>
+    </tr>
+</table>
+
+</body>
+</html>
+
+
+<br><br>
+
+{% endblock content %}

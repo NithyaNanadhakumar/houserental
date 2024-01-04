@@ -1,0 +1,49 @@
+{% extends 'Admin/Head.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="4" align="center" style="font-family: 'Times New Roman', Times, serif;color:red">
+            <tr>
+                <td>Country</td>
+                <td><input type="text" name="c1" id=""value=""></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="save"value="Save">
+                    <input type="submit" name="save" value="Cancel"></td>
+            </tr>
+        </table><br><br><br>
+    
+        <table border="4" align="center" cellpadding="11" style="font-family: 'Times New Roman', Times, serif;color:forestgreen">
+            <tr>
+                <th>SL.No</th>
+                <th>Country</th>
+                <th>Action</th>
+            </tr>
+            {% for  i in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i}}</td>
+                <td><a href="{% url 'aadmin:delcountry' i.id %}">Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+                     <a href="{% url 'aadmin:editcountry' i.id %}">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+   </form> 
+
+</body>
+</html>
+
+{% endblock content %}

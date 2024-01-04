@@ -1,0 +1,67 @@
+{% extends 'Admin/Head.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br><br><br>
+   <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table border="4" align="center" cellpadding="11" style="font-family: 'Times New Roman', Times, serif;color:blue">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="name" id="" value=""></td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td><input type="text" name="contact" id="" value=""></td>
+        </tr>
+        <tr>
+            <td>E-mail</td>
+            <td><input type="text" name="email" id="" value=""></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><textarea name="address" id="" value="" rows="5" cols="30"></textarea></td>
+        </tr>
+        <tr>
+            <td>Country</td>
+            <td> 
+                <select name="condrop">
+                <option value="">----SELECT----</option>
+                {% for i in Con %}
+                <option value="{{i.id}}">{{i}}</option>
+                {% endfor %}
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td>photo</td>
+            <td><input type="file" name="photo" id="" value=""></td> 
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="pw" id=""></td>
+        </tr>
+        <tr>
+            <td>Confirm Password</td>
+            <td><input type="password" name="pw" id=""></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="save"value="Register">
+                <input type="submit" name="save" value="Cancel"></td>
+        </tr>
+    </table>
+   </form>
+ 
+</body>
+</html>
+
+{% endblock content %}

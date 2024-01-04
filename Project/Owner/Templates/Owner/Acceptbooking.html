@@ -1,0 +1,43 @@
+{% extends 'Owner/Head.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br><br><br>
+    {% csrf_token %}
+    <table border="1" align="center" cellpadding="10">
+        <tr>
+            <th>SL.No</th>
+            <th>Name</th>
+            <th>RentType</th>
+            <th>RentName</th>
+            <th>Booking Date</th>
+            <th>Action</th>
+        </tr>
+        {% for i in Pdt %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.user.name}}</td>
+                <td>{{i.rent.renttype.renttype_name}}</td>
+                <td>{{i.rent.rentname}}</td>
+                <td>{{i.requestdate}}</td>
+                <td><a href="{% url 'owner:rejectbook' i.id %}">REJECT</a></td>
+            </tr>
+            {% endfor %}
+    </table>
+</body>
+</html>
+
+<br><br>
+
+{% endblock content %}

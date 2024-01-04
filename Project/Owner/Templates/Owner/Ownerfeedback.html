@@ -1,0 +1,43 @@
+{% extends 'Owner/Head.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>    
+
+</style> 
+
+</head>  
+
+<body align="center">    
+<h2>LEAVE A FEEDBACK</h2>     
+    <form action="" method="post">
+        {% csrf_token %}
+    <table align="center" border="1">
+      <tr>
+        <td>Feedback</td>
+        <td><textarea name="txtfeed"  cols="25" rows="6" placeholder="Write something.."></textarea></td>
+      </tr>
+      <tr>
+        <td align="center" colspan="2">
+          <input type="submit" name="submit" value="Submit">
+          <input type="reset" name="cancel" value="Clear">
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>    
+</html>
+
+
+<br><br>
+
+{% endblock content %}

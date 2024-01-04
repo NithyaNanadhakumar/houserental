@@ -1,0 +1,66 @@
+{% extends 'Owner/Head.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+		.tble{
+			color: rgb(250, 255, 255);
+			font-size: 18px;
+			background-color: rgb(13, 58, 107);
+            font-family: 'Times New Roman', Times, serif
+		}
+		.tble1{
+			color: black;
+			font-size: 18px;
+            font-family: 'Times New Roman', Times, serif
+
+		}
+		td, th{
+			height: 50px;
+			width: 100px;
+
+		}
+		tr{
+			background-color: rgb(247, 197, 228);
+		}
+		
+	</style>
+</head>
+<body>
+    <br><br>
+    {% csrf_token %}
+    <table border="4" align="center" cellpadding="10">
+        <tr class="tble">
+            <th>SL.No</th>
+            <th>Name</th>
+            <th>RentType</th>
+            <th>RentName</th>
+            <th>Booking Date</th>
+            <th>Action</th>
+        </tr>
+        {% for i in Pdt %}
+        <tr class="tble1" >
+                <td>{{forloop.counter}}</td>
+                <td>{{i.user.name}}</td>
+                <td>{{i.rent.renttype.renttype_name}}</td>
+                <td>{{i.rent.rentname}}</td>
+                <td>{{i.requestdate}}</td>
+                <td><a href="{% url 'owner:acceptbook' i.id %}">ACCEPT</a>   /   <a href="{% url 'owner:rejectbook' i.id %}">REJECT</a></td>
+            </tr>
+            {% endfor %}
+    </table>
+</body>
+</html>
+
+<br><br>
+
+{% endblock content %}

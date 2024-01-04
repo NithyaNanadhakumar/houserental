@@ -1,0 +1,59 @@
+{% extends 'Officer/Head.html' %}
+{% load static %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table border="4" align="center" cellpadding="10" style="border-collapse: collapse;" >
+            <tr>
+                <th>SL.NO</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Gender</th>
+                <th>Zipcode</th>
+                <th>Country</th>
+                <th>State</th>
+                <th>District</th>
+                <th>Place</th>
+                <th>Photo</th>
+                <th>Proof</th>
+                <th>Action</th>
+            </tr>
+            {% for i in Us %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.contact}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.address}}</td>
+                    <td>{{i.gender}}</td>
+                    <td>{{i.zipcode}}</td>
+                    <td>{{i.place.district.state.country}}</td>
+                    <td>{{i.place.district.state}}</td>
+                    <td>{{i.place.district}}</td>
+                    <td>{{i.place}}</td>
+                    <td><img src="{{i.photo.url}}" alt="img" width="120px" height="120px"></td>
+                    <td><img src="{{i.proof.url}}" alt="img" width="120px" height="120px"></td>
+                    <td><a href="{% url 'officer:acptdetail' i.id %}">Accept</a><br>
+                        <a href="{% url 'officer:rejectdetail' i.id %}">Reject</a></td>
+                </tr>
+                {% endfor %}
+        </table>        
+</body>
+</html>
+
+<br><br><br>
+
+{% endblock content %}

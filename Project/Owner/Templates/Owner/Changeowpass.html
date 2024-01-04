@@ -1,0 +1,43 @@
+{% extends 'Owner/Head.html' %}
+{% load static %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br><br>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table border="4" align="center" cellpadding="10" style="border-collapse: collapse;">
+            <tr>
+                <td>Current Password</td>
+                <td><input type="text" name="Cpass1" id=""></td>
+            </tr>
+            <tr>
+                <td>New Password</td>
+                <td><input type="password" name="Npass1" id=""></td>
+            </tr>
+            <tr>
+                <td>Confirm Password</td>
+                <td><input type="password" name="Copass1" id=""></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="Change password">
+                <input type="reset" value="Cancel"></td>
+            </tr>
+        </table>
+        {{ERR}}
+    </form>
+</body>
+</html>
+
+<br><br>
+
+{% endblock content %}

@@ -1,0 +1,82 @@
+
+{% extends 'User/Head.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+		.tble{
+			color: rgb(250, 255, 255);
+			font-size: 18px;
+			background-color: rgb(13, 58, 107);
+            font-family: 'Times New Roman', Times, serif
+		}
+		.tble1{
+			color: black;
+			font-size: 18px;
+            font-family: 'Times New Roman', Times, serif
+
+		}
+		td, th{
+			height: 50px;
+			width: 100px;
+
+		}
+		tr{
+			background-color: rgb(247, 197, 228);
+		}
+		
+	</style>
+</head>
+<body>
+    <br><br><br>
+    <form action="" method="post">
+    {% csrf_token %}
+    <table border="1" align="center" cellpadding="10" style="width:80%; ">
+        <tr class="tble">
+            <th>SL.No</th>
+            <th>Owner Name</th>
+            <th>Rent Name</th>
+            <th>Owner Contact</th>
+            <th>Address</th>
+            <th>Status</th>
+            
+        </tr>
+        {% for i in data %}
+        <tr class="tble1" >
+            <td>{{forloop.counter}}</td>
+            <td>{{i.rent.owner.name}}</td>
+            <td>{{i.rent.rentname}}</td>
+            <td>{{i.rent.owner.contact}}</td>
+            <td>{{i.rent.details}}</td>
+
+            <td>
+                {% if i.vstatus == 1 %}
+                <p>Accepted  <a href="{% url 'user:pay' i.id  %}">PayNow</a></p>
+                {% elif i.vstatus == 2 %}
+                <p>Rejected!!</p>
+                {% elif i.vstatus == 3 %}
+                <p>Payment Completed !</p>
+                {% else %}
+                <p>Pending..</p>
+                {% endif %}
+            </td>
+              
+        </tr>
+        {% endfor %}
+        </table>
+    </form>
+</body>
+</html>
+
+<br><br>
+
+{% endblock content %}
